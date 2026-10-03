@@ -1,4 +1,4 @@
-/package com.tienda.tienda.repository;
+package com.tienda.tienda.repository;
 
 
 
