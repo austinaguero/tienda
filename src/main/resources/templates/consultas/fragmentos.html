@@ -63,6 +63,7 @@
                 </div>
             </div>
         </section>
+
         <div th:fragment='formConsulta(colorForm, textoForm, urlForm)'>
             <form method="post" th:action='@{${urlForm}}' class='was-validated'>
                 <div class='card p-2'>
@@ -89,5 +90,23 @@
                 </div>
             </form>
         </div>
-    </body>
-</html>
+
+        <!-- fragmento 3 para los formularios de consultas -->
+        <section th:fragment='consultas' class='row row-cols-4 p-2'>
+            <div th:replace="~{consultas/fragmentos :: formConsulta('primary',#{consultas.derivadas},'/consultas/consultaDerivada')}"/>
+            <div th:replace="~{consultas/fragmentos :: formConsulta('warning',#{consultas.jpql},'/consultas/consultaJPQL')}"/>
+            <div th:replace="~{consultas/fragmentos :: formConsulta('success',#{consultas.sql},'/consultas/consultaSQL')}"/>
+            <!-- Práctica #2: producto más caro de cada categoría -->
+            <div>
+                <form method="post" th:action="@{/consultas/consultaMasCaroPorCategoria}">
+                    <div class="card p-2">
+                        <div class="card-header text-center text-white bg-danger">
+                            <h5>Más caro por categoría</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted">Muestra el producto de mayor precio de cada categoría.</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-danger text-white">
+                                <i class="fa-solid fa-magnifying-glass"></i> Consultar
+                            </button>
